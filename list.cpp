@@ -11,6 +11,21 @@ struct list *next;
 };
 //Global declaration for head object 
 struct list *head=NULL; 
+//reverse function to reverse the linked list 
+void reverse(struct list** head_ref)
+{
+    struct list* prev   = NULL;
+    struct list* current = *head_ref;
+    struct list* next;
+    while (current != NULL)
+    {
+        next  = current->next;  
+        current->next = prev;   
+        prev = current;
+        current = next;
+    }
+    *head_ref = prev;
+}
 //delat function removes element at ith position 
 void delat(int i){ 
 struct list *temp; 
@@ -85,7 +100,8 @@ break;
 }
 }
 int main() 
-{ 
+{
+struct list *reHead; 
 append(3); //Call to append(3) list becomes 3->NULL
 append(34); //Call to append(34) list becomes 3->34->NULL
 append(342); //Call to append(342) list becomes 3->34->342->NULL
@@ -95,5 +111,7 @@ append(432); //Call to append(432) list becomes 3->34->342->432
 appendat(2,33); //Call to appendat(2,33) appends list at 2nd position with val of 33 
 delat(2); //Call to delat(2) removes 2nd element in the list
 print(); //Call to print() prints out the list 
+reverse(&head);
+print();
 return 0; 
 }
