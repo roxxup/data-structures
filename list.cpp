@@ -11,6 +11,19 @@ struct list *next;
 };
 //Global declaration for head object 
 struct list *head=NULL; 
+//appendat function add elements at ith position
+void appendat(int i,int val){ 
+struct list *temp;
+struct list *lat = (struct list*)malloc(sizeof(struct list));
+lat->data =  val; 
+temp = head; 
+for(int j = 1; j < i-1;j++){ 
+temp=temp->next; 
+}
+lat->next = temp->next; 
+temp->next = lat; 
+ 
+}
 //Append function to add elements to list
 void append(int val){ 
 struct list *temp; 
@@ -68,8 +81,9 @@ append(3); //Call to append(3) list becomes 3->NULL
 append(34); //Call to append(34) list becomes 3->34->NULL
 append(342); //Call to append(342) list becomes 3->34->342->NULL
 append(34242); //Call to append(342424) list becomes 3->34->342->342424->NULL
-del(); //Call to del() list becomes 3->34->342->NULL
+//del(); //Call to del() list becomes 3->34->342->NULL
 append(432); //Call to append(432) list becomes 3->34->342->432 
+appendat(2,33); //Call to appendat(2,33) appends list at 2nd position with val of 33 
 print(); //Call to print() prints out the list 
 return 0; 
 }
