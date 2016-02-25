@@ -5,16 +5,18 @@ char arr[234];
 int front = -1; 
 int rear = -1; 
 void enqueue(char ch){ 
-arr[++front] = ch; 
+arr[++rear] = ch; 
 }
 void peek(){ 
-cout << "current element " << arr[front] << endl;
+cout << "current element " << arr[rear] << endl;
 }
 void dequeue(){ 
---front; 
+++front; 
 }
 int main()
 { 
+front = 0; 
+rear = 0;
 enqueue('h');
 dequeue();  
 peek();
